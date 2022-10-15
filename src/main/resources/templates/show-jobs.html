@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="home::layout(~{::section})">
+<head>
+<!-- CSS only -->
+<title>Show Jobs</title>
+
+
+</head>
+
+<body>
+<section>
+
+<div class="d-flex flex-column justify-content-between mb-3" id="drop-items">
+<div class="fonts"  th:each="c : ${show}">
+<div class="card text-center mx-auto mb-4  "  style="width: 50%;">
+  <div class="card-header" id="head" th:text="${c.role}">
+    
+  </div>
+  <div class="card-body " th:classappend="${c.daysleft}<=14 AND ${c.daysleft}>3? 'bg-warning' : ''">
+  <div class="card-body " th:classappend="${c.daysleft}<=3? 'bg-danger' : ''">
+  <div class="card-body " th:classappend="${c.daysleft}>=15 ? 'bg-success' : ''">
+    <h5 class="card-title" id="desc" th:text="|DESCRIPTION-> ${c.description}|" ></h5>
+    <p class="card-text" th:text="|LOCATION-> ${c.location}|"></p>
+     <p class="card-text" th:text="|CONTACT US-> ${c.contact}|"></p>
+    <a href="#" class="btn btn-primary">INTERESTED?</a>
+  </div>
+  </div>
+  </div>
+  <div class="card-footer text-muted" th:text="|LAST DATE TO REGISTER-> ${c.deadline}|">
+  </div>
+</div>
+
+</div>
+</div>
+</section>
+</body>
+</html>

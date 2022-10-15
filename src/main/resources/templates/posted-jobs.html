@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="home::layout(~{::section})">
+<head>
+<!-- CSS only -->
+<title>Posted page</title>
+
+
+</head>
+
+<body>
+<section>
+
+<div class="d-flex flex-column justify-content-between mb-3" id="drop-items">
+<div class="fonts"  th:each="c : ${show}">
+<div class="card text-center mx-auto mb-4  "  style="width: 50%;">
+  <div class="card-header" id="head" th:text="${c.role}">
+    
+  </div>
+  <div class="card-body ">
+    <h5 class="card-title" id="desc" th:text="|DESCRIPTION-> ${c.description}|" ></h5>
+    <p class="card-text" th:text="|LOCATION-> ${c.location}|"></p>
+     <p class="card-text" th:text="|CONTACT US-> ${c.contact}|"></p>
+    <a th:onclick="deleteJob([[${c.jobid}]]);" class="btn btn-primary">DELETE?</a>
+    <a href="#" class="btn btn-primary">View Interested </a>
+  </div>
+  <div class="card-footer text-muted" th:text="|LAST DATE TO REGISTER-> ${c.deadline}|">
+  </div>
+</div>
+
+</div>
+</div>
+</section>
+</body>
+</html>

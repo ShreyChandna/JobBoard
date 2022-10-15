@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="home::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Add Jobs</title>
+<style>
+body{
+    background-color:#eee;
+}
+
+.form-control{
+    background-color:#212529;
+    border:1px solid #fff;
+    caret-color:#fff;
+    color:#fff;
+    height:45px;
+    margin-top:14px;
+}
+
+.form-control:focus{
+    background-color:#212529;
+    box-shadow:none;
+    border:1px solid #fff;
+    color:#fff;
+    
+}
+
+.form-select{
+    background-color:#212529;
+    border:1px solid #fff;
+    color:#fff;
+    font-size:15px;
+    height:45px;
+}
+
+.form-select:focus{
+    box-shadow:none;
+    border:1px solid #fff;
+}
+
+.signup-button{
+    height:48px;
+}
+</style>
+</head>
+<body>
+<section>
+
+	<div class="container mb-5">
+    
+    <div class="row d-flex justify-content-center align-items-center">
+        
+        <div class="col-md-6">
+            
+            <div class="card bg-dark p-3 text-center text-white">
+                
+         
+                
+                <h1>Welcome</h1>
+                <span>Add A New Job</span>
+                <div class="p-2 px-5">
+               		<form  
+							  th:action="@{/user/process_jobs}" method="post" th:object="${add}"
+							  class="mt-2"
+						>
+                     <input type="text" id="role" name="role" class="form-control" placeholder="Enter Role" th:value="${add.role}"}>
+                     <input type="text" id="description" name="description" class="form-control" placeholder="Enter Description" th:value="${add.description}">
+                     <input type="text" id="location" name="location" class="form-control" placeholder="Enter Location" th:value="${add.location}">
+                     <input class="form-control" type="text" id="deadline" onfocus="(this.type='date')" name="deadline" placeholder="Enter deadline" th:value="${add.deadline}">
+                     <input type="email" id="contact" name="contact" class="form-control " placeholder="Enter Contact Details">
+                          		
+                     <button class="btn btn-danger w-100 signup-button mt-5" >Post Job</button>
+                     
+                      <div th:if="${session.message}" class="container">
+	<div th:classappend="${'alert '+session.message.type}" class="text-center" role="alert">
+	<span th:text="${session.message.content}"></span>
+	</div>
+    <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+	</div>
+               		</form>	
+          
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+    
+</div>
+	
+</section>
+<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
+</body>
+</html>
